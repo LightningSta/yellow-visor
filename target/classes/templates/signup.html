@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="shortcut icon" href="./svg/icon.svg" type="image/x-icon">
+
+</head>
+<body>
+<header>
+    <p class="logoname" onclick="home()">YelloDash</p>
+    <div class="headertext">
+        <p onclick="course()">О нас</p>
+        <p onclick="course()">Обратная связь</p>
+        <p onclick="course()">Отзывы</p>
+    </div>
+    <div class="header_buttons">
+        <button class="login" onclick="sentToReg()">Регистрация</button>
+        <button class="sign" onclick="sentTologin()">Войти</button>
+    </div>
+</header>
+
+<section class="signin signup">
+    <form id="signup" name="signup" action="/registration" method="post">
+        <h2>Регистрация</h2>
+
+        <label for="reg_username">Логин:</label>
+        <input type="text" id="reg_username" name="name" placeholder="Ваш логин..." required>
+
+        <label for="reg_password">Пароль:</label>
+        <input type="password" id="reg_password" name="password" placeholder="Ваш пароль.." required>
+        <label for="reg_mail">Почта:</label>
+        <input type="text" id="reg_mail" name="mail" placeholder="Ваша почта..." required>
+
+        <label for="reg_nick">Никнейм:</label>
+        <input type="text" id="reg_nick" name="nick" placeholder="Ваш никнейм.." required>
+        <p class="regtxt" onclick="sentTologin()">Войти в аккаунт</p>
+
+        <input onclick="registartion()" type="submit" value="Зарегистрироваться">
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2024 YellowDash. Все права защищены.</p>
+</footer>
+<script src="/JS/Auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <meta name="_csrf_header" th:content="${_csrf.headerName}" />
+    <title>Главная</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link rel="shortcut icon" href="./svg/icon.svg" type="image/x-icon">
+
+</head>
+<body>
+<header>
+    <p class="logoname" onclick="home()">YelloDash</p>
+    <div class="headertext">
+        <p onclick="course()">О нас</p>
+        <p onclick="course()">Обратная связь</p>
+        <p onclick="course()">Отзывы</p>
+    </div>
+</header>
+
+<section class="main main-auth">
+    <div class="items form-home-flex">
+        <image onclick="groupsShow()" id="groups" class="icons" src="/images/group.svg"></image>
+        <p name="opis">При нажатии на данную иконку позволяет создать группу</p>
+        <div id="group-form" class="form-home form-home-none hidden">
+            <input type="text" id="group_name" placeholder="Введите название группы">
+            <input type="text" id="group_member" placeholder="Введите ники участников через ','">
+            <button onclick="createGroup()">Создать группу</button>
+        </div>
+    </div>
+    <div  class="items form-home-flex">
+        <image onclick="penshow()" class="icons" id="pen" src="/images/pen.svg"></image>
+        <p name="opis">При нажатии на данную иконку позволяет создать проект</p>
+        <div id="pen-form" class="form-home form-home-none hidden">
+            <input type="text" id="project_name" placeholder="Введите имя вашего проекта">
+            <button onclick="createProject()">создать проект</button>
+        </div>
+    </div>
+    <div  class="items form-home-flex" >
+        <image onclick="projectshow()" class="icons" id="projects" src="/images/projects.svg"></image>
+        <p name="opis">При нажатии на данную иконку позволяет посмотреть список ваших проектов</p>
+        <div id="projects-form" class="form-home form-home-flex form-home-flex-direc hidden">
+            <div th:each="project : ${projects}">
+                <div class="plate projects-text">
+                    <a th:href="'/project?id='+${project.getProjectName()}" th:text="${project.getProjectName()}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 YellowDash. Все права защищены.</p>
+</footer>
+<script src="/JS/Auth.js"></script>
+<script src="/JS/Group.js"></script>
+<script src="/JS/Projects.js"></script>
+<script src="/JS/Animations.js"></script>
+</body>
+</html>

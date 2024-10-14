@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Event Example</title>
+    <script>
+        function handleInput(event) {
+            const value = event.target.value;
+            console.log("Вы ввели:", value);
+            // Здесь можно добавить любую другую логику
+        }
+
+        window.onload = function() {
+            const inputElement = document.getElementById("myInput");
+            inputElement.addEventListener("mousedown", handleInput);
+            console.log(inputElement)
+        };
+    </script>
+</head>
+<body>
+<input type="text" id="myInput" placeholder="Введите текст...">
+</body>
+</html>
