@@ -42,6 +42,8 @@ public class ProjectsAnalys {
 
     protected boolean createFolderAndCommit(String project_name) {
         File folder = new File(pathToFs+project_name);
+        System.out.println(folder.getAbsolutePath());
+        System.out.println(folder.exists());
         if(!folder.exists()){
             folder.mkdir();
             File commit_folder = new File(pathToFs+project_name+"/"+commitName);
@@ -92,20 +94,13 @@ public class ProjectsAnalys {
 
     protected void FileWriteJson(JSONObject json, String path){
         File file = new File(path);
-        System.out.println(path);
-        if(!file.exists()){
-            System.out.println("creating file");
-            try {
-                System.out.println(file.createNewFile());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+        System.out.println(path+"write json");
         try {
             FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(json.toString(2));
             fileWriter.close();
         } catch (IOException e) {
+            System.out.println(e.getMessage());
             throw new RuntimeException(e);
         }
     }
@@ -231,8 +226,6 @@ public class ProjectsAnalys {
 
     public void createProject(String name, Person person){
         File directory = new File(pathToFs);
-        System.out.println(directory.exists());
-        System.out.println(directory.isDirectory());
         if (!directory.exists()) {
             directory.mkdirs();
             System.out.println("Directory created");
