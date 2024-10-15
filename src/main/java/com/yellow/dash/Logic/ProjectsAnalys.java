@@ -111,6 +111,7 @@ public class ProjectsAnalys {
         jsonObject.put("Starting",new ArrayList<Quest>());
         jsonObject.put("InProgress",new ArrayList<Quest>());
         jsonObject.put("Ready",new ArrayList<Quest>() );
+        System.out.println(pathTo+"/"+baseInfo+".json");
         FileWriteJson(jsonObject, pathTo+"/"+baseInfo+".json");
     }
 
@@ -204,6 +205,7 @@ public class ProjectsAnalys {
         File dir = new File(pathToFs);
         if(dir.listFiles()!=null){
             for (File file : dir.listFiles()) {
+                System.out.println(file.getAbsolutePath());
                 JSONObject jsonObject =readFile(file.getAbsolutePath()+"/"+maininfo+".json");
                 if(ArrayContented(jsonObject.getJSONArray("users-access"),person.getId())){
                     Project project = new Project(jsonObject.getString("project-name"),
