@@ -97,6 +97,7 @@ public class ProjectsAnalys {
             fileWriter.write(json.toString(2));
             fileWriter.close();
         } catch (IOException e) {
+            System.out.println("ecxxxxx");
             throw new RuntimeException(e);
         }
     }
