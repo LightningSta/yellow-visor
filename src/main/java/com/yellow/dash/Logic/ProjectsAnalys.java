@@ -118,6 +118,7 @@ public class ProjectsAnalys {
 
 
     protected JSONObject readFile(String path){
+        System.out.println(path);
         File file = new File(path);
         FileReader fr = null;
         try {
@@ -205,7 +206,6 @@ public class ProjectsAnalys {
         File dir = new File(pathToFs);
         if(dir.listFiles()!=null){
             for (File file : dir.listFiles()) {
-                System.out.println(file.getAbsolutePath());
                 JSONObject jsonObject =readFile(file.getAbsolutePath()+"/"+maininfo+".json");
                 if(ArrayContented(jsonObject.getJSONArray("users-access"),person.getId())){
                     Project project = new Project(jsonObject.getString("project-name"),
