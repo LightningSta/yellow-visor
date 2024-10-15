@@ -222,8 +222,11 @@ public class ProjectsAnalys {
 
     public void createProject(String name, Person person){
         File directory = new File(pathToFs);
+        System.out.println(directory.exists());
+        System.out.println(directory.isDirectory());
         if (!directory.exists()) {
             directory.mkdirs();
+            System.out.println("Directory created");
         }
         if(createFolderAndCommit(name)){
             createMainInfo(name, person);
