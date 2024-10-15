@@ -232,7 +232,7 @@ public class ProjectsAnalys {
             System.out.println("Directory created");
         }
         if(createFolderAndCommit(name)){
-            String pathTo=pathToFs+name+"/";
+            String pathTo=pathToFs+name;
             System.out.println(pathTo);
             createMainInfo(name, person);
             createProjectInfo(pathTo);
