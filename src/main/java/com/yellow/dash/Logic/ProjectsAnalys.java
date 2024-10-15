@@ -48,6 +48,7 @@ public class ProjectsAnalys {
             folder.mkdir();
             File commit_folder = new File(pathToFs+project_name+"/"+commitName);
             commit_folder.mkdir();
+            System.out.println(folder.exists()+" "+commit_folder.exists());
             return true;
         }else{
             return false;
@@ -94,7 +95,13 @@ public class ProjectsAnalys {
 
     protected void FileWriteJson(JSONObject json, String path){
         File file = new File(path);
-        System.out.println(path+"write json");
+        try {
+            System.out.println(file.createNewFile());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+        System.out.println(path+" write json");
         try {
             FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(json.toString(2));
