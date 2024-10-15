@@ -92,10 +92,11 @@ public class ProjectsAnalys {
 
     protected void FileWriteJson(JSONObject json, String path){
         File file = new File(path);
+        System.out.println(path);
         if(!file.exists()){
             System.out.println("creating file");
             try {
-                file.createNewFile();
+                System.out.println(file.createNewFile());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
