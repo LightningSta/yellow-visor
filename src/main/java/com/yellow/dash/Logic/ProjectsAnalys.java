@@ -95,12 +95,6 @@ public class ProjectsAnalys {
 
     protected void FileWriteJson(JSONObject json, String path){
         File file = new File(path);
-        try {
-            System.out.println(file.createNewFile());
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-            throw new RuntimeException(e);
-        }
         System.out.println(path+" write json");
         try {
             FileWriter fileWriter = new FileWriter(file);
@@ -238,9 +232,11 @@ public class ProjectsAnalys {
             System.out.println("Directory created");
         }
         if(createFolderAndCommit(name)){
+            String pathTo=pathToFs+name+"/";
+            System.out.println(pathTo);
             createMainInfo(name, person);
-            createProjectInfo(pathToFs+name);
-            createRole(pathToFs+name,person);
+            createProjectInfo(pathTo);
+            createRole(pathTo,person);
         }
     }
 

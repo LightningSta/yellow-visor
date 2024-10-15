@@ -11,5 +11,7 @@ COPY --from=layers /application/dependencies/ ./
 COPY --from=layers /application/spring-boot-loader/ ./
 COPY --from=layers /application/snapshot-dependencies/ ./
 COPY --from=layers /application/application/ ./
+USER root
+RUN mkdir -p /app && chmod 777 /app
 
 ENTRYPOINT ["java", "org.springframework.boot.loader.launch.JarLauncher"]
