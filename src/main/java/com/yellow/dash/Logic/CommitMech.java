@@ -14,9 +14,9 @@ public class CommitMech extends ProjectsAnalys {
 
 
     protected void incrimentCountCommit(String projectName){
-        JSONObject obj = readFile(pathToFs+projectName+"\\"+maininfo+".json");
+        JSONObject obj = readFile(pathToFs+projectName+"/"+maininfo+".json");
         obj.put("commit-count",obj.getInt("commit-count")+1);
-        FileWriteJson(obj,pathToFs+projectName+"\\"+maininfo+".json");
+        FileWriteJson(obj,pathToFs+projectName+"/"+maininfo+".json");
     }
 
     public void saveCommit(String projectName) {
@@ -27,18 +27,18 @@ public class CommitMech extends ProjectsAnalys {
                 + date.getDayOfMonth()+"-"
                 + date.getMonth()+"-"
                 + date.getYear();
-        FileWriteJson(readFile(pathToFs+projectName+"\\"+baseInfo+".json"),pathToFs+projectName+"\\"+commitName+"\\"+dateS+".json");
+        FileWriteJson(readFile(pathToFs+projectName+"/"+baseInfo+".json"),pathToFs+projectName+"/"+commitName+"/"+dateS+".json");
         incrimentCountCommit(projectName);
     }
 
     public JSONObject setCommit(String projectName, String commit) {
-        FileWriteJson(readFile(pathToFs+projectName+"\\"+commitName+"\\"+commit),pathToFs+projectName+"\\"+baseInfo+".json");
-        return readFile(pathToFs+projectName+"\\"+baseInfo+".json");
+        FileWriteJson(readFile(pathToFs+projectName+"/"+commitName+"/"+commit),pathToFs+projectName+"/"+baseInfo+".json");
+        return readFile(pathToFs+projectName+"/"+baseInfo+".json");
     }
 
     public JSONObject getCommitList(String projectName) {
         ArrayList<String> list = new ArrayList<>();
-        File file = new File(pathToFs+projectName+"\\"+commitName);
+        File file = new File(pathToFs+projectName+"/"+commitName);
         for (int i = 0; i < file.listFiles().length; i++) {
             list.add(file.listFiles()[i].getName());
         }

@@ -118,7 +118,6 @@ public class ProjectsAnalys {
 
 
     protected JSONObject readFile(String path){
-        System.out.println(path);
         File file = new File(path);
         FileReader fr = null;
         try {
@@ -243,6 +242,7 @@ public class ProjectsAnalys {
     }
 
     public JSONObject getRules(Person person, String project_name){
+        System.out.println(project_name+" getR");
         JSONObject jsonObject = readFile(pathToFs+project_name+"/"+role_info+".json");
         return jsonObject.getJSONObject(String.valueOf(person.getId()));
     }
